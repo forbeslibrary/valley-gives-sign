@@ -1,0 +1,63 @@
+<html>
+<head>
+  <style>
+  body {
+    width: 1080px;
+    height:1920px;
+    border: white solid 10px;
+    padding: 150px 20px;
+    box-sizing: border-box;
+    background-color: #00a552;
+    font-size: 75px;
+    style= font-family: 'Century Gothic';
+    font-weight: bold;
+    color: white;
+    text-align: center;
+  }
+  p {
+    margin: 20px 0;
+  }
+  .slide {
+    display: none;
+  }
+  </style>
+</head>
+<body>
+  <div class="slide">
+    <p style="margin-top: 250px">DOUBLE YOUR DONATION</p>
+    <img src="valley-gives-may-1.png">
+    <p>forbeslibrary.org/valleygives</p>
+  </div>
+  <div class="slide">
+    <p style="margin-top: 250px">SUPPORT FORBES LIBRARY</p>
+    <img src="valley-gives-may-1.png">
+    <p>forbeslibrary.org/valleygives</p>
+  </div>
+  <div class="slide">
+    <p style="margin-top: 300px; font-size: 100px;" id="time-remaining"></p>
+    <img src="valley-gives-branding.png">
+    <p>forbeslibrary.org/valleygives</p>
+    <script>
+      var targetDate = new Date("2018-05-01");
+      var now = new Date();
+      var timeRemaining = targetDate.getTime() - now.getTime();
+      var daysRemaining = Math.ceil(timeRemaining / 1000 / 60 / 60 / 24);
+      document.getElementById("time-remaining").innerHTML = (daysRemaining > 1) ?
+        '<span style="color: yellow;">' + daysRemaining + '</span> MORE DAYS UNTIL' :
+        'ONE MORE DAY UNTIL';
+    </script>
+  </div>
+  <script>
+    // display one random slide
+    var slides = document.getElementsByClassName("slide");
+    var index = getRandomInt(slides.length);
+    var slide = slides[index];
+
+    slide.style.display = "block";
+
+    function getRandomInt(max) {
+      return Math.floor(Math.random() * Math.floor(max));
+    }
+  </script>
+</body>
+</html>
