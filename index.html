@@ -13,6 +13,7 @@
     font-weight: bold;
     color: white;
     text-align: center;
+    margin: 0;
   }
   p {
     margin: 20px 0;
@@ -48,13 +49,28 @@
     </script>
   </div>
   <script>
-    // display one random slide
-    var slides = document.getElementsByClassName("slide");
-    var index = getRandomInt(slides.length);
-    var slide = slides[index];
+    changeSlide()
+    setInterval(function(){ changeSlide(); }, 30000);
 
-    slide.style.display = "block";
+    var currentSlide;
 
+    /**
+     * Display one random slide
+     */
+    function changeSlide() {
+      if (currentSlide) {
+        currentSlide.style.display = "none";
+      }
+      var slides = document.getElementsByClassName("slide");
+      var index = getRandomInt(slides.length);
+      currentSlide = slides[index];
+
+      currentSlide.style.display = "block";
+    }
+
+    /**
+     * Get a random integer less than the specified max
+     */
     function getRandomInt(max) {
       return Math.floor(Math.random() * Math.floor(max));
     }
