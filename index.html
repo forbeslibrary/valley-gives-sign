@@ -49,30 +49,23 @@
     </script>
   </div>
   <script>
+    var currentSlide;
+    var slideNumber = 0;
     changeSlide()
     setInterval(function(){ changeSlide(); }, 30000);
 
-    var currentSlide;
-
     /**
-     * Display one random slide
+     * Display next slide in sequence
      */
     function changeSlide() {
       if (currentSlide) {
         currentSlide.style.display = "none";
       }
       var slides = document.getElementsByClassName("slide");
-      var index = getRandomInt(slides.length);
-      currentSlide = slides[index];
+      slideNumber = (slideNumber + 1) % slides.length;
+      currentSlide = slides[slideNumber];
 
       currentSlide.style.display = "block";
-    }
-
-    /**
-     * Get a random integer less than the specified max
-     */
-    function getRandomInt(max) {
-      return Math.floor(Math.random() * Math.floor(max));
     }
   </script>
 </body>
